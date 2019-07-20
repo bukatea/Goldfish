@@ -37,7 +37,8 @@ set(SOURCES
         src/timer.cpp
         src/tb.cpp
         src/tt.cpp
-        src/uci.cpp)
+        src/uci.cpp
+        src/chesstest.cpp)
 set(TESTFILES
         tests/bitboardtest.cpp
         tests/castlingtest.cpp
@@ -89,6 +90,9 @@ endif()
 add_executable(goldfish.x app/goldfish.cpp)
 target_link_libraries(goldfish.x PRIVATE engine)
 
+add_executable(chesstest app/chesstest.cpp)
+target_link_libraries(chesstest PRIVATE engine)
+
 add_executable(bench.x app/bench.cpp)
 target_link_libraries(bench.x PRIVATE engine)
 
@@ -96,7 +100,7 @@ add_executable(perft.x app/perft.cpp)
 target_link_libraries(perft.x PRIVATE engine)
 
 set_target_properties(
-    engine goldfish.x bench.x perft.x 
+    engine goldfish.x bench.x perft.x chesstest
     PROPERTIES
     CXX_STANDARD 17 
     CXX_STANDARD_REQUIRED YES 
